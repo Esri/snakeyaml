@@ -13,6 +13,8 @@
  */
 package org.yaml.snakeyaml.constructor;
 
+import org.yaml.snakeyaml.LoaderOptions;
+
 /**
  * Construct instances with a custom Class Loader.
  */
@@ -23,8 +25,23 @@ public class CustomClassLoaderConstructor extends Constructor {
   /**
    * Create
    *
+<<<<<<< HEAD
+=======
+   * @param loader - the class loader to find the class definition
+   * @param loadingConfig - options
+   */
+  public CustomClassLoaderConstructor(ClassLoader loader, LoaderOptions loadingConfig) {
+    super(loadingConfig);
+    this.loader = loader;
+  }
+
+  /**
+   * Create
+   *
+>>>>>>> 2b8d47c8 (Do not allow global tags by default)
    * @param cLoader the class loader to find the class definition
    */
+  @Deprecated
   public CustomClassLoaderConstructor(ClassLoader cLoader) {
     this(Object.class, cLoader);
   }
@@ -34,9 +51,23 @@ public class CustomClassLoaderConstructor extends Constructor {
    *
    * @param theRoot - the class to instantiate
    * @param theLoader - the class loader to find the class definition
+   * @deprecated use loading options
    */
+  @Deprecated
   public CustomClassLoaderConstructor(Class<? extends Object> theRoot, ClassLoader theLoader) {
-    super(theRoot);
+    this(theRoot, theLoader, new LoaderOptions());
+  }
+
+  /**
+   * Create
+   *
+   * @param loadingConfig - options
+   * @param theRoot - the class to instantiate
+   * @param theLoader - the class loader to find the class definition
+   */
+  public CustomClassLoaderConstructor(Class<? extends Object> theRoot, ClassLoader theLoader,
+      LoaderOptions loadingConfig) {
+    super(theRoot, loadingConfig);
     if (theLoader == null) {
       throw new NullPointerException("Loader must be provided.");
     }
