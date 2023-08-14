@@ -25,8 +25,6 @@ public class CustomClassLoaderConstructor extends Constructor {
   /**
    * Create
    *
-<<<<<<< HEAD
-=======
    * @param loader - the class loader to find the class definition
    * @param loadingConfig - options
    */
@@ -38,7 +36,6 @@ public class CustomClassLoaderConstructor extends Constructor {
   /**
    * Create
    *
->>>>>>> 2b8d47c8 (Do not allow global tags by default)
    * @param cLoader the class loader to find the class definition
    */
   @Deprecated
